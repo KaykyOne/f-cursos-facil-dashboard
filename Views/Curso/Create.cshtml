@@ -1,0 +1,57 @@
+@model Plataforma_EAD.Models.Curso
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="p-6 bg-neutral-900 min-h-screen text-white">
+    <h1 class="text-3xl font-bold mb-4">Criar Curso</h1>
+    <h4 class="text-xl font-semibold mb-2">Curso</h4>
+    <hr class="border-gray-700 mb-6"/>
+
+    <div class="max-w-md bg-neutral-800 p-6 rounded-lg shadow-md">
+        <form asp-action="Create" class="space-y-4">
+            <div asp-validation-summary="ModelOnly" class="text-red-500 text-sm"></div>
+
+            <div>
+                <label asp-for="Titulo" class="block mb-1 font-medium"></label>
+                <input asp-for="Titulo" class="w-full px-3 py-2 rounded-md bg-neutral-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                <span asp-validation-for="Titulo" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div>
+                <label asp-for="Descricao" class="block mb-1 font-medium"></label>
+                <input asp-for="Descricao" class="w-full px-3 py-2 rounded-md bg-neutral-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                <span asp-validation-for="Descricao" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div>
+                <label asp-for="PrecoBase" class="block mb-1 font-medium"></label>
+                <input asp-for="PrecoBase" class="w-full px-3 py-2 rounded-md bg-neutral-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                <span asp-validation-for="PrecoBase" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div>
+                <label asp-for="CargaHoraria" class="block mb-1 font-medium"></label>
+                <input asp-for="CargaHoraria" class="w-full px-3 py-2 rounded-md bg-neutral-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                <span asp-validation-for="CargaHoraria" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="pt-4">
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition-colors flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined">add</span> Create
+                </button>
+            </div>
+        </form>
+
+        <div class="mt-4">
+            <a asp-action="Index" class="text-blue-400 hover:text-blue-500 transition-colors flex items-center gap-1">
+                <span class="material-symbols-outlined">arrow_back</span> Back to List
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

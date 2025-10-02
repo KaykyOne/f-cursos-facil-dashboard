@@ -1,0 +1,58 @@
+@model Plataforma_EAD.Models.Matricula
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="p-6 bg-neutral-900 min-h-screen text-white">
+    <h1 class="text-3xl font-bold mb-4">Editar Matrícula</h1>
+
+    <div class="max-w-md bg-neutral-800 p-6 rounded-lg shadow-md">
+        <h4 class="text-xl font-semibold mb-2">Matrícula</h4>
+        <hr class="border-gray-700 mb-4"/>
+
+        <form asp-action="Edit" class="space-y-4">
+            <input type="hidden" asp-for="AlunoId" />
+            <input type="hidden" asp-for="CursoId" />
+
+            <div class="flex flex-col">
+                <label asp-for="Data" class="mb-1 font-medium"></label>
+                <input asp-for="Data" class="bg-neutral-900 border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                <span asp-validation-for="Data" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="flex flex-col">
+                <label asp-for="PrecoPago" class="mb-1 font-medium"></label>
+                <input asp-for="PrecoPago" class="bg-neutral-900 border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                <span asp-validation-for="PrecoPago" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="flex flex-col">
+                <label asp-for="Status" class="mb-1 font-medium"></label>
+                <input asp-for="Status" class="bg-neutral-900 border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                <span asp-validation-for="Status" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="flex flex-col">
+                <label asp-for="Progresso" class="mb-1 font-medium"></label>
+                <input asp-for="Progresso" class="bg-neutral-900 border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                <span asp-validation-for="Progresso" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="flex flex-col">
+                <label asp-for="NotaFinal" class="mb-1 font-medium"></label>
+                <input asp-for="NotaFinal" class="bg-neutral-900 border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                <span asp-validation-for="NotaFinal" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="flex gap-2">
+                <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md flex items-center gap-1 transition-colors">
+                    <span class="material-symbols-outlined">save</span> Save
+                </button>
+                <a asp-action="Index" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md flex items-center gap-1 transition-colors">
+                    <span class="material-symbols-outlined">arrow_back</span> Back to List
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

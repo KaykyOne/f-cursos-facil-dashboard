@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Plataforma_EAD</title>
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Plataforma_EAD.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,100,0,0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+</head>
+
+<body class="bg-neutral-900 text-white">
+    <header>
+        <nav class="w-full p-2">
+            <div
+                class="bg-neutral-800 rounded-lg p-3 text-white flex gap-2 hover:bg-neutral-700 transition-all duration-300 justify-between items-center pl-10 pr-10">
+                <a class="text-2xl font-bold" asp-area="" asp-controller="Home" asp-action="Index">Cursos Fácil</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="flex gap-5">
+                    <ul class="flex gap-5">
+                        <li
+                            class="cursor-pointer flex items-center gap-1 hover:bg-neutral-500 transition-all duration-300 rounded-md p-1">
+                            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <span class="material-symbols-outlined">home</span>
+                        </li>
+                        <li
+                            class="cursor-pointer flex items-center gap-1 hover:bg-neutral-500 transition-all duration-300 rounded-md p-1">
+                            <a asp-area="" asp-controller="Aluno" asp-action="Index">Alunos</a>
+                            <span class="material-symbols-outlined">school</span>
+                        </li>
+                        <li
+                            class="cursor-pointer flex items-center gap-1 hover:bg-neutral-500 transition-all duration-300 rounded-md p-1">
+                            <a asp-area="" asp-controller="Curso" asp-action="Index">Cursos</a>
+                            <span class="material-symbols-outlined">menu_book</span>
+                        </li>
+                        <li
+                            class="cursor-pointer flex items-center gap-1 hover:bg-neutral-500 transition-all duration-300 rounded-md p-1">
+                            <a asp-area="" asp-controller="Matricula" asp-action="Index">Matrículas</a>
+                            <span class="material-symbols-outlined">assignment</span>
+                        </li>
+                        <li
+                            class="cursor-pointer flex items-center gap-1 hover:bg-neutral-500 transition-all duration-300 rounded-md p-1">
+                            <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <span class="material-symbols-outlined">lock</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="w-full min-h-full p-5">
+        <main role="main" class="pb-3 h-full">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="bg-neutral-950 p-4 flex justify-center items-center w-full fixed bottom-0">
+        <div class="w-full text-center">
+            &copy; 2025 - Plataforma_EAD - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        // Função para disparar toasts com base no TempData do ASP.NET
+        document.addEventListener("DOMContentLoaded", () => {
+            const toastType = '@TempData["ToastType"]';
+            const toastMessage = '@TempData["ToastMessage"]';
+
+            if (toastMessage) {
+                switch (toastType) {
+                    case "success":
+                        toastr.success(toastMessage);
+                        break;
+                    case "error":
+                        toastr.error(toastMessage);
+                        break;
+                    case "warning":
+                        toastr.warning(toastMessage);
+                        break;
+                    case "info":
+                        toastr.info(toastMessage);
+                        break;
+                    default:
+                        toastr.info(toastMessage);
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

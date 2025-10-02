@@ -1,0 +1,57 @@
+@model IEnumerable<Plataforma_EAD.Models.Curso>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="p-6 bg-neutral-900 min-h-screen text-white">
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold mb-4">Cursos</h1>
+
+        <div class="mb-4">
+            <a asp-action="Create"
+                class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md flex items-center gap-1 transition-colors">
+                <span class="material-symbols-outlined">add</span> Create New
+            </a>
+        </div>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-neutral-800 rounded-lg overflow-hidden">
+            <thead class="bg-neutral-700">
+                <tr>
+                    <th class="px-4 py-2 text-left">Título</th>
+                    <th class="px-4 py-2 text-left">Descrição</th>
+                    <th class="px-4 py-2 text-left">Preço Base</th>
+                    <th class="px-4 py-2 text-left">Carga Horária</th>
+                    <th class="px-4 py-2 text-left">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="border-b border-neutral-700 hover:bg-neutral-700 transition-colors">
+                        <td class="px-4 py-2">@Html.DisplayFor(modelItem => item.Titulo)</td>
+                        <td class="px-4 py-2">@Html.DisplayFor(modelItem => item.Descricao)</td>
+                        <td class="px-4 py-2">@Html.DisplayFor(modelItem => item.PrecoBase)</td>
+                        <td class="px-4 py-2">@Html.DisplayFor(modelItem => item.CargaHoraria)</td>
+                        <td class="px-4 py-2 flex gap-2">
+                            <a asp-action="Edit" asp-route-id="@item.Id"
+                                class="bg-yellow-500 hover:bg-yellow-600 px-2 py-1 rounded-md flex items-center gap-1">
+                                <span class="material-symbols-outlined">edit</span> Edit
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.Id"
+                                class="bg-blue-600 hover:bg-blue-700 px-2 py-1 rounded-md flex items-center gap-1">
+                                <span class="material-symbols-outlined">info</span> Details
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id"
+                                class="bg-red-600 hover:bg-red-700 px-2 py-1 rounded-md flex items-center gap-1">
+                                <span class="material-symbols-outlined">delete</span> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
